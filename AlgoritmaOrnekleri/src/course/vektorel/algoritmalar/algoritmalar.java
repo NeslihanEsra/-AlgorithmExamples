@@ -10,7 +10,7 @@ public class algoritmalar {
 
 	public static void main(String[] args) {
 		algoritmalar inst = new algoritmalar();
-		inst.algo11();
+		inst.algo14();
 	}
 
 	// Klavyeden girilen n adet notun ortalamasý
@@ -186,7 +186,8 @@ public class algoritmalar {
 	}
 
 	// Bir komisyoncu sattýðý mallardan fiyatý 50 TL kadar olanlardan %3,
-	// daha fazla olanlardan ise %2 komisyon almaktadýr. Klavyeden girilen 5 malýn
+	// daha fazla olanlardan ise %2 komisyon almaktadýr. Klavyeden girilen 5
+	// malýn
 	// komisyonlarýný bularak, toplam komisyonu hesaplayýnýz.
 	private void algo11() {
 		System.out.println("5 tane mal fiyatýný giriniz");
@@ -196,11 +197,141 @@ public class algoritmalar {
 		}
 		for (Double malList : list) {
 			if (malList < 50) {
-				System.out.println("Girilen sayýnýn 3: " + (malList+(malList * 3/100)));
+				System.out.println("Girilen sayýnýn 3: " + (malList + (malList * 3 / 100)));
 			} else {
-				System.out.println("Girilen sayýnýn 5: " + (malList + (malList* 5/100)));
+				System.out.println("Girilen sayýnýn 5: " + (malList + (malList * 5 / 100)));
 			}
 		}
 	}
-	//asdfghjk
+
+	// Klavyeden 5 adet yarýçapý verilen çemberlerin alanýný ve çevresini
+	// hesaplama
+	private void algo12() {
+		List<Double> list = new ArrayList<>();
+		System.out.println("5 tane yarýçap deðeri giriniz:");
+		for (int i = 0; i < 5; i++) {
+			double yaricap = scan.nextDouble();
+			list.add(yaricap);
+		}
+		for (Double yaricapList : list) {
+			System.out.println("Çemberin çevresi: " + 2 * yaricapList * Math.PI);
+			System.out.println("Çemberin alaný: " + yaricapList * yaricapList * Math.PI);
+		}
+	}
+
+	// Klavyeden girilecek n sayýsý kadar notun en büyük ve en küçük olaný bulma
+	private void algo13() {
+		List<Integer> list = new ArrayList<>();
+		System.out.println("Kaç tane not girmek istiyorsunuz?");
+		int nTane = scan.nextInt();
+		for (int i = 0; i < nTane; i++) {
+			System.out.println((i + 1) + ". sayýyý giriniz");
+			list.add(scan.nextInt());
+		}
+		list.sort(null);
+		System.out.println("En küçük not: " + list.get(0));
+		System.out.println("En büyük not: " + list.get(nTane - 1));
+	}
+
+	// Ýç içe döngüler ile saat: dakika: saniye olarak saat yapýnýz. Saat 0 ile
+	// 23, dakika 0 ile 59 ve saniye de 0 ile 59 arasýnda ilerleyecektir.
+	private void algo14() {
+			for (int i = 0; i < 24; i++) {
+				for (int j = 0; j < 60; j++) {
+					for (int j2 = 0; j2 < 60; j2++) {
+						System.out.println(i + ":" + j + ":" + j2);
+					}
+				}
+			}
+		}
+	
+
+	// Klavyeden girilen 100’lük sistemdeki 5 notu; 0, 1, 2, 3, 4 ve 5 olacak
+	// þekilde ekrana yazan programý yapýnýz.
+	private void algo15() {
+		System.out.println("Notunuzu giriniz:");
+		int not = scan.nextInt();
+		if (not < 20 && not >= 0) {
+			System.out.println("5'lik sistemde karþýlýðý: 0");
+		} else if (not < 40 && not >= 20) {
+			System.out.println("5'lik sistemde karþýlýðý: 1");
+		} else if (not < 50 && not >= 40) {
+			System.out.println("5'lik sistemde karþýlýðý: 2");
+		} else if (not < 70 && not >= 50) {
+			System.out.println("5'lik sistemde karþýlýðý: 3");
+		} else if (not < 80 && not >= 70) {
+			System.out.println("5'lik sistemde karþýlýðý: 4");
+		} else if (not >= 100 && not >= 80) {
+			System.out.println("5'lik sistemde karþýlýðý: 5");
+		}
+	}
+
+	// Sayýsal olarak girilen bir ay bilgisini ekrana “Ocak, Þubat, Mart veya
+	// diðer aylardan biri…” þeklinde yazan programý yapýnýz.
+	private void algo16() {
+		Scanner scan = new Scanner(System.in);
+		while (true) {
+			System.out.println("Ayýn numarasýný giriniz");
+			int ay = scan.nextInt();
+			switch (ay) {
+			case 1:
+				System.out.println("ocak");
+				break;
+			case 2:
+				System.out.println("þubat");
+				break;
+			case 3:
+				System.out.println("mart");
+				break;
+			case 4:
+				System.out.println("nisan");
+				break;
+			case 5:
+				System.out.println("mayýs");
+				break;
+			case 6:
+				System.out.println("haziran");
+				break;
+			case 7:
+				System.out.println("temmuz");
+				break;
+			case 8:
+				System.out.println("aðustos");
+				break;
+			case 9:
+				System.out.println("eylül");
+				break;
+			case 10:
+				System.out.println("ekim");
+				break;
+			case 11:
+				System.out.println("kasým");
+				break;
+			case 12:
+				System.out.println("aralýk");
+				break;
+			default:
+				System.out.println("Hatalý");
+				break;
+			}
+		}
+	}
+
+	// Haftanýn günü (Pazartesi, Salý, …) girilince, o günün haftanýn kaçýncý
+	// günü olduðunu bulan programý yapýnýz.
+
+	// Fiyat ve KDV oraný ayrý ayrý girilen N malýn toplam fiyatýný
+	// hesaplayýnýz.
+
+	// Klavyeden dakika olarak girilen 5 þarkýnýn toplam süresini saat olarak
+	// hesaplayan programý yapýnýz.
+
+	// Girilen iþlem türüne (* / - +) göre iki sayýyý iþleme alýp sonucunu
+	// ekrana yazan programý yapýnýz. |
+
+	// 1000 000 a kadar olan sayýlarý yazýya çeviren uygulamayý yazýn
+
+	// Rasgele girilen TC Kimlik numarasýnýn dogru olup olmadýgýný bulan metodu
+	// yazýn
+
 }
