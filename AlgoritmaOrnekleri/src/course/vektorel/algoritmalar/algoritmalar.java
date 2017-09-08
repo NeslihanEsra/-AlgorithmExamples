@@ -5,12 +5,85 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
+import javax.swing.JOptionPane;
+
 public class algoritmalar {
-	Scanner scan = new Scanner(System.in);
+	static Scanner scan = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		algoritmalar inst = new algoritmalar();
-		inst.algo20();
+		
+		System.out.println("Kullanýcý adýnýzý giriniz");
+		String kAdi = scan.nextLine();
+		System.out.println("Kullanýcý þifrenizi giriniz");
+		String kSifre = scan.nextLine();
+		
+		if (kAdi.equals("ab") && kSifre.equals("ab")) {
+			System.out.println("Sadece ilk 10 numaralý algoritmayý kullanabilirsiniz");
+			int algoNo = scan.nextInt();
+			switch (algoNo) {
+			case 1: inst.algo1(); break;
+			case 2: inst.algo2(); break;
+			case 3: inst.algo3(); break;
+			case 4: inst.algo4(); break;
+			case 5: inst.algo5(); break;
+			case 6: inst.algo6(); break;
+			case 7: inst.algo7(); break;
+			case 8: inst.algo8(); break;
+			case 9: inst.algo9(); break;
+			case 10: inst.algo10(); break;
+			default: System.out.println("Lüften! 1-10 arasý sayý giriniz."); break;
+			}
+		}
+		else if (kAdi.equals("bc") && kSifre.equals("bc")) {
+			System.out.println("Sadece arasýndaki 1 ve 23 arasýndaki tek sayýlý algoritmalarý kullanabilirsiniz");
+			int algoNo = scan.nextInt();
+			switch (algoNo) {
+			case 1: inst.algo1(); break;
+			case 3: inst.algo3(); break;
+			case 5: inst.algo5(); break;
+			case 7: inst.algo7(); break;
+			case 9: inst.algo9(); break;
+			case 11: inst.algo11(); break;
+			case 13: inst.algo13(); break;
+			case 15: inst.algo15(); break;
+			case 17: inst.algo17(); break;
+			case 19: inst.algo19(); break;
+			case 21: inst.algo21(); break;
+			case 23: inst.algo23(); break;
+			default: System.out.println("Lüften! 1-23 arasý tek sayý giriniz."); break;
+			}
+		}
+		else if (kAdi.equals("admin") && kSifre.equals("admin")) {
+			System.out.println("1-23 arasýndaki algoritmalarý kullanabilirsiniz");
+			int algoNo = scan.nextInt();
+			switch (algoNo) {
+			case 1: inst.algo1(); break;
+			case 2: inst.algo2(); break;
+			case 3: inst.algo3(); break;
+			case 4: inst.algo4(); break;
+			case 5: inst.algo5(); break;
+			case 6: inst.algo6(); break;
+			case 7: inst.algo7(); break;
+			case 8: inst.algo8(); break;
+			case 9: inst.algo9(); break;
+			case 10: inst.algo10(); break;
+			case 11: inst.algo11(); break;
+			case 12: inst.algo12(); break;
+			case 13: inst.algo13(); break;
+			case 14: inst.algo14(); break;
+			case 15: inst.algo15(); break;
+			case 16: inst.algo16(); break;
+			case 17: inst.algo17(); break;
+			case 18: inst.algo18(); break;
+			case 19: inst.algo19(); break;
+			case 20: inst.algo20(); break;
+			case 21: inst.algo21(); break;
+			case 22: inst.algo22(); break;
+			case 23: inst.algo23(); break;
+			default: System.out.println("Lüften! 1-23 arasý tek sayý giriniz."); break;
+			}
+		}	
 	}
 
 	// Klavyeden girilen n adet notun ortalamasý
@@ -441,7 +514,7 @@ public class algoritmalar {
 			int kosul1, kosul2;
 			kosul1 = ((bir + uc + bes + yedi) * 7 - (iki + dort + alti + sekiz)) % 10;
 			kosul2 = (bir + uc + bes + yedi + iki + dort + alti + sekiz) % 10;
-			
+
 			if (bir == 0) {
 				System.out.println("Kimlik numarasý 0 ile baþlamaz");
 			} else if (kosul1 == on && kosul2 == onbir) {
@@ -451,7 +524,7 @@ public class algoritmalar {
 			}
 		}
 	}
-	
+
 	private void algo23() {
 		System.out.println("1.Kenarý giriniz");
 		int k1 = scan.nextInt();
@@ -459,8 +532,8 @@ public class algoritmalar {
 		int k2 = scan.nextInt();
 		System.out.println("3.Kenarý giriniz");
 		int k3 = scan.nextInt();
-		
-		if ((k2+k3)>k1 && (k2-k3)<k1 || (k1+k3)>k2 && (k1-k3)<k3 || (k1+k2)>k3 && (k1-k2)<k3) {
+
+		if ((k2 + k3) > k1 && (k2 - k3) < k1 || (k1 + k3) > k2 && (k1 - k3) < k3 || (k1 + k2) > k3 && (k1 - k2) < k3) {
 			System.out.println("Bu üçgen Ã§izilebilir.");
 			if (k1 == k2 && k1 == k3 && k2 == k3) {
 				System.out.println("Bu üçgen eþkenardýr.");
@@ -470,15 +543,11 @@ public class algoritmalar {
 				System.out.println("Bu üçgen çeþitkenardýr.");
 			}
 
-		int uCevre = k1+k2+k3;
-		System.out.println("Üçgenin çevresi: " + uCevre);
-		System.out.println("Üçgenin alaný: " + ((uCevre-k1)*(uCevre-k2)*(uCevre-k3)*1/2));
+			int uCevre = k1 + k2 + k3;
+			System.out.println("Üçgenin çevresi: " + uCevre);
+			System.out.println("Üçgenin alaný: " + ((uCevre - k1) * (uCevre - k2) * (uCevre - k3) * 1 / 2));
 		} else {
 			System.out.println("Bu üçgen Ã§izilemez.");
-		}	
-	}
-	
-	private void algo24() {
-
+		}
 	}
 }
