@@ -10,7 +10,7 @@ public class algoritmalar {
 
 	public static void main(String[] args) {
 		algoritmalar inst = new algoritmalar();
-		inst.algo14();
+		inst.algo20();
 	}
 
 	// Klavyeden girilen n adet notun ortalamasý
@@ -236,15 +236,14 @@ public class algoritmalar {
 	// Ýç içe döngüler ile saat: dakika: saniye olarak saat yapýnýz. Saat 0 ile
 	// 23, dakika 0 ile 59 ve saniye de 0 ile 59 arasýnda ilerleyecektir.
 	private void algo14() {
-			for (int i = 0; i < 24; i++) {
-				for (int j = 0; j < 60; j++) {
-					for (int j2 = 0; j2 < 60; j2++) {
-						System.out.println(i + ":" + j + ":" + j2);
-					}
+		for (int i = 0; i < 24; i++) {
+			for (int j = 0; j < 60; j++) {
+				for (int j2 = 0; j2 < 60; j2++) {
+					System.out.println(i + ":" + j + ":" + j2);
 				}
 			}
 		}
-	
+	}
 
 	// Klavyeden girilen 100’lük sistemdeki 5 notu; 0, 1, 2, 3, 4 ve 5 olacak
 	// þekilde ekrana yazan programý yapýnýz.
@@ -269,9 +268,8 @@ public class algoritmalar {
 	// Sayýsal olarak girilen bir ay bilgisini ekrana “Ocak, Þubat, Mart veya
 	// diðer aylardan biri…” þeklinde yazan programý yapýnýz.
 	private void algo16() {
-		Scanner scan = new Scanner(System.in);
 		while (true) {
-			System.out.println("Ayýn numarasýný giriniz");
+			System.out.println("Ay numarasýný giriniz:");
 			int ay = scan.nextInt();
 			switch (ay) {
 			case 1:
@@ -319,19 +317,168 @@ public class algoritmalar {
 
 	// Haftanýn günü (Pazartesi, Salý, …) girilince, o günün haftanýn kaçýncý
 	// günü olduðunu bulan programý yapýnýz.
+	private void algo17() {
+		while (true) {
+			System.out.println("Gün adýný yazýnýz:");
+			String[] gunler = { "pazartesi", "salý", "çarþamba", "perþembe", "cuma", "cumartesi", "pazar" };
+			String gunlerNo = scan.nextLine();
+			for (int i = 0; i < gunler.length; i++) {
+				if (gunlerNo.equalsIgnoreCase(gunler[i])) {
+					System.out.println(i + 1);
+				}
+			}
+		}
+	}
 
 	// Fiyat ve KDV oraný ayrý ayrý girilen N malýn toplam fiyatýný
 	// hesaplayýnýz.
+	private void algo18() {
+		List<Double> malList = new ArrayList<>();
+		List<Double> kdvList = new ArrayList<>();
+		System.out.println("Kaç tane mal giriþi yapacaksýnýz?");
+		int nTane = scan.nextInt();
+
+		for (int i = 0; i < nTane; i++) {
+			System.out.println("Malýn fiyatý:");
+			malList.add(scan.nextDouble());
+			System.out.println("KDV'nin fiyatý:");
+			kdvList.add(scan.nextDouble());
+		}
+		int toplamFiyat = 0;
+		for (int i = 0; i < nTane; i++) {
+			double netFiyat = malList.get(i) + malList.get(i) * kdvList.get(i) / 100;
+			System.out.println(netFiyat);
+			toplamFiyat += netFiyat;
+		}
+		System.out.println("Toplam Fiyat" + toplamFiyat);
+	}
 
 	// Klavyeden dakika olarak girilen 5 þarkýnýn toplam süresini saat olarak
 	// hesaplayan programý yapýnýz.
+	private void algo19() {
+		List<Double> sarki = new ArrayList<>();
+		double toplamSüre = 0;
+		for (int i = 0; i < 5; i++) {
+			System.out.println("Þarkýnýn dakikasýný giriniz");
+			double sarkiSüre = scan.nextDouble();
+			toplamSüre += sarkiSüre;
+		}
+		System.out.println(toplamSüre / 60);
+	}
 
 	// Girilen iþlem türüne (* / - +) göre iki sayýyý iþleme alýp sonucunu
 	// ekrana yazan programý yapýnýz. |
+	private void algo20() {
+		System.out.println("Menüden yapmak istediðiniz karakteri giriniz");
 
-	// 1000 000 a kadar olan sayýlarý yazýya çeviren uygulamayý yazýn
+		System.out.println("--- Menü ---");
+		System.out.println("+ --> Topla ");
+		System.out.println("- --> Çýkar");
+		System.out.println("* --> Çarp");
+		System.out.println("/ --> Böl");
+
+		String islem = scan.nextLine();
+
+		System.out.println("Birinci sayýyý giriniz");
+		int sayi1 = scan.nextInt();
+		System.out.println("Ýkinci sayýyý giriniz");
+		int sayi2 = scan.nextInt();
+
+		if (islem.equals("+")) {
+			System.out.println("Sonuç= " + (sayi1 + sayi2));
+		} else if (islem.equals("-")) {
+			System.out.println("Sonuç= " + (sayi1 - sayi2));
+		} else if (islem.equals("*")) {
+			System.out.println("Sonuç= " + (sayi1 * sayi2));
+		} else if (islem.equals("/")) {
+			System.out.println("Sonuç= " + (double) (sayi1 / sayi2));
+		} else {
+			System.out.println("Hatalý karakter");
+		}
+	}
+
+	// 1000 000 a kadar olan sayýlarý yazýya çeviren uygulamayý yazýnýz.
+	private void algo21() {
+		int sayi, birler, onlar, yuzler, binler;
+		sayi = Integer.valueOf(JOptionPane.showInputDialog("Lütfen Bir Sayý Girin"));
+
+		birler = sayi % 10;
+		onlar = (sayi / 10) % 10;
+		yuzler = (sayi / 100) % 10;
+		binler = (sayi / 1000) % 10;
+
+		String[] birlik = { "", "Bir", "Ýki", "Üç", "Dört", "Beþ", "Altý", "Yedi", "Sekiz", "Dokuz" };
+		String[] onluk = { "", "On", "Yirmi", "Otuz", "Kýrk", "Elli", "Altmýþ", "Yetmiþ", "Seksen", "Doksan" };
+		String[] yuzluk = { "", "Yüz", "Ýkiyüz", "Üçyüz", "Dörtyüz", "Beþyüz", "Altýyüz", "Yediyüz", "Sekizyüz",
+				"Dokuzyüz" };
+		String[] binlik = { "", "Bin", "Ýkibin", "Üçbin", "Dörtbin", "Beþbin", "Altýbin", "Yedibin", "Sekizbin",
+				"Dokuzbin" };
+
+		System.out.println(binlik[binler] + "  " + yuzluk[yuzler] + " " + onluk[onlar] + " " + birlik[birler]);
+	}
 
 	// Rasgele girilen TC Kimlik numarasýnýn dogru olup olmadýgýný bulan metodu
 	// yazýn
+	private void algo22() {
+		System.out.println("T.C kimlik numaranýzý giriniz:");
+		String tc = scan.nextLine();
 
+		if (tc.length() != 11) {
+			System.out.println("11 haneli T.c numarýnýzý giriniz.");
+		} else {
+			int bir = Integer.valueOf(tc.charAt(0));
+			int iki = Integer.valueOf(tc.charAt(1));
+			int uc = Integer.valueOf(tc.charAt(2));
+			int dort = Integer.valueOf(tc.charAt(3));
+			int bes = Integer.valueOf(tc.charAt(4));
+			int alti = Integer.valueOf(tc.charAt(5));
+			int yedi = Integer.valueOf(tc.charAt(6));
+			int sekiz = Integer.valueOf(tc.charAt(7));
+			int dokuz = Integer.valueOf(tc.charAt(8));
+			int on = Integer.valueOf(tc.charAt(9));
+			int onbir = Integer.valueOf(tc.charAt(10));
+
+			int kosul1, kosul2;
+			kosul1 = ((bir + uc + bes + yedi) * 7 - (iki + dort + alti + sekiz)) % 10;
+			kosul2 = (bir + uc + bes + yedi + iki + dort + alti + sekiz) % 10;
+			
+			if (bir == 0) {
+				System.out.println("Kimlik numarasý 0 ile baþlamaz");
+			} else if (kosul1 == on && kosul2 == onbir) {
+				System.out.println("Kimlik geçerlidir.");
+			} else {
+				System.out.println("Kimlik geçerli deðildir!");
+			}
+		}
+	}
+	
+	private void algo23() {
+		System.out.println("1.Kenarý giriniz");
+		int k1 = scan.nextInt();
+		System.out.println("2.Kenarý± giriniz");
+		int k2 = scan.nextInt();
+		System.out.println("3.Kenarý giriniz");
+		int k3 = scan.nextInt();
+		
+		if ((k2+k3)>k1 && (k2-k3)<k1 || (k1+k3)>k2 && (k1-k3)<k3 || (k1+k2)>k3 && (k1-k2)<k3) {
+			System.out.println("Bu üçgen Ã§izilebilir.");
+			if (k1 == k2 && k1 == k3 && k2 == k3) {
+				System.out.println("Bu üçgen eþkenardýr.");
+			} else if (k1 == k2 || k1 == k3 && k2 == k3) {
+				System.out.println("Bu üçgen ikizkenardýr.");
+			} else if (k1 != k2 && k1 != k3 && k2 != k3) {
+				System.out.println("Bu üçgen çeþitkenardýr.");
+			}
+
+		int uCevre = k1+k2+k3;
+		System.out.println("Üçgenin çevresi: " + uCevre);
+		System.out.println("Üçgenin alaný: " + ((uCevre-k1)*(uCevre-k2)*(uCevre-k3)*1/2));
+		} else {
+			System.out.println("Bu üçgen Ã§izilemez.");
+		}	
+	}
+	
+	private void algo24() {
+
+	}
 }
